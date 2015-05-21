@@ -10,8 +10,8 @@ namespace Algo.Tests
     [TestFixture]
     public class Reco
     {
-        static string _badDataPath = @"E:\Intech\2015-1\S9-10\Algo\ThirdParty\MovieData\MovieLens\";
-        static string _goodDataPath = @"E:\Intech\2015-1\S9-10\Algo\ThirdParty\MovieData\";
+        static string _badDataPath = @"H:\Clouds\SkyDrive\Dev\Perso\C#\Alog-2015\1\ThirdParty\MovieData\MovieLens\";
+        static string _goodDataPath = @"H:\Clouds\SkyDrive\Dev\Perso\C#\Alog-2015\1\ThirdParty\MovieData\";
 
         [Test]
         public void CorrectData()
@@ -111,5 +111,25 @@ namespace Algo.Tests
                 Assert.That( c.Movies[i].MovieID, Is.EqualTo( i+1 ) );
         }
 
+        [Test]
+        public void ComputingDistanceBetween2Users()
+        {
+            RecoContext c = new RecoContext();
+            
+            double distance = Double.NaN;
+
+            for (int i = 0; i<c.Users.Length; i++)
+            {
+                var u1 = c.Users[i];
+                Assert.That(c.Distance(u1, u1) == 0);
+
+                for (int j = i + 1; j < c.Users.Length; j++)
+                {
+                    var u2 = c.Users[j];
+                    Assert.That( c.Distance(u1, u2) == c.Distance(u2, u1) );
+                }
+            }
+            
+        }
     }
 }
