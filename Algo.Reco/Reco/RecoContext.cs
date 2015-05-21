@@ -7,6 +7,7 @@ using Algo.Reco;
 
 namespace Algo
 {
+
     public class RecoContext
     {
         public User[] Users { get; private set; }
@@ -96,29 +97,55 @@ namespace Algo
 
         private SimilarUser[] GetSimilarUsers(User u, int count)
         {
-            
+
+            var bestUsers = new BestKeeper<SimilarUser>(count, (u1, u2) =>
+            {
+                return Math.Sign(u1.Similarity - u2.Similarity);
+            });
+
+            foreach (User user in Users)
+            {
+                if (user == u) continue;
+                bestUsers.Add(new SimilarUser(user, DistancePearson(u, user));
+            }
+
+            return bestUsers.ToArray();
         }
     }
 
     public class BestKeeper<T> : IReadOnlyList<T> {
 
         private T[] _dataSet;
+        private int _maxCount;
+        private int _count;
 
         public BestKeeper(int count, Func<T, T, int> comparator) {
             if (count < 0) { throw new ArgumentException("Count should be equal or superior at 0"); }
 
             _dataSet = new T[count];
+            _maxCount = count;
+            _count = 0;
         }
 
-        public bool Add(T item) {
-            int position = Array.BinarySearch(_dataSet, item);
+        public bool Add(T candidate ) {
+            int idx = Array.BinarySearch(_dataSet, 0, _count, candidate /*, comparator*/);
+            if (idx < _count)
+            {
+
+            }
+
+            return false;
         }
 
         int Count { get { return 0; } }
 
         public T this[int index]
         {
-            get { throw new NotImplementedException(); }
+            get {
+                if (index >= _count) throw new ArgumentOutOfRangeException();
+
+                return _dataSet[index];
+            }
         }
 
         int IReadOnlyCollection<T>.Count
@@ -128,12 +155,12 @@ namespace Algo
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _dataSet.Take(_count).GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return _dataSet.GetEnumerator();
         }
     }
 }
