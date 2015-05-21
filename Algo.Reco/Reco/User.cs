@@ -75,8 +75,5 @@ namespace Algo
         public string ZipCode { get { return _zipCode; } }
 
         public Dictionary<Movie, int> Ratings { get; private set; }
-
     }
-    
-
 }

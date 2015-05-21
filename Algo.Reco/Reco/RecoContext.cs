@@ -90,9 +90,21 @@ namespace Algo
             return 1 / (1 + distance);
         }
 
+        public double SimilartyPearson(User u1, User u2)
+        {
+            var distance = DistancePearson(u1, u2);
+            if (Double.IsNaN(distance))
+            {
+                return 0;
+            }
+
+            return distance;
+        }
+
         public List<Movie> GetRecoMovies(User u, int count)
         {
             SimilarUser[] similarUsers = GetSimilarUsers(u, 200);
+
         }
 
         private SimilarUser[] GetSimilarUsers(User u, int count)
@@ -100,13 +112,13 @@ namespace Algo
 
             var bestUsers = new BestKeeper<SimilarUser>(count, (u1, u2) =>
             {
-                return Math.Sign(u1.Similarity - u2.Similarity);
+                return Math.Sign(u2.Similarity - u1.Similarity);
             });
 
             foreach (User user in Users)
             {
                 if (user == u) continue;
-                bestUsers.Add(new SimilarUser(user, DistancePearson(u, user));
+                bestUsers.Add(new SimilarUser(user, SimilartyPearson(u, user)) );
             }
 
             return bestUsers.ToArray();

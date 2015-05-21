@@ -44,9 +44,6 @@ namespace Algo.Optim
                 _cache.Add( p, flights );
             }
             return flights;
-        }
-
-
-    
+        }   
     }
 }
