@@ -39,7 +39,8 @@ namespace Algo
                 }
             }
 
-            return haveCommonMovie ? Math.Sqrt(distance) : Double.NaN;
+            return Math.Sqrt(distance);
+            //return haveCommonMovie ? Math.Sqrt(distance) : Double.NaN;
         }
 
         public double Similarity(User u1, User u2)

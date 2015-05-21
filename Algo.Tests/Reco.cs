@@ -117,12 +117,12 @@ namespace Algo.Tests
             RecoContext c = new RecoContext();
             c.LoadFrom(_goodDataPath);
             
-            for (int i = 0; i < c.Users.Length; i++)
+            for (int i = 0; i < c.Users.Length && i < 10; i++)
             {
                 var u1 = c.Users[i];
                 Assert.That(c.DistanceNorm2(u1, u1) == 0);
 
-                for (int j = i + 1; j < c.Users.Length; j++)
+                for (int j = i + 1; j < c.Users.Length && i < 10; j++)
                 {
                     var u2 = c.Users[j];
                     var d1 =  c.DistanceNorm2(u1, u2);
