@@ -120,13 +120,13 @@ namespace Algo.Tests
             for (int i = 0; i < c.Users.Length && i < 10; i++)
             {
                 var u1 = c.Users[i];
-                Assert.That(c.DistanceNorm2(u1, u1) == 0);
+                Assert.That(c.DistancePearson(u1, u1) == 0);
 
                 for (int j = i + 1; j < c.Users.Length && i < 10; j++)
                 {
                     var u2 = c.Users[j];
-                    var d1 =  c.DistanceNorm2(u1, u2);
-                    var d2 = c.DistanceNorm2(u2, u1);
+                    var d1 = c.DistancePearson(u1, u2);
+                    var d2 = c.DistancePearson(u2, u1);
 
                     Assert.That( d1 == d2 );
                 }

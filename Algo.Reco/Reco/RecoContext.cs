@@ -43,6 +43,41 @@ namespace Algo
             //return haveCommonMovie ? Math.Sqrt(distance) : Double.NaN;
         }
 
+        public double DistancePearson(User u1, User u2)
+        {
+            double uX = 0;
+            double uY = 0;
+            double uXPow2 = 0;
+            double uYPow2 = 0;
+            int watchDog = 0;
+
+            foreach(var r in u1.Ratings) {
+                Movie mU1 = r.Key;
+                int ratingU1 = r.Value;
+
+                int ratingU2;
+                if (u2.Ratings.TryGetValue(mU1, out ratingU2))
+                {
+                    uX += ratingU1;
+                    uXPow2 += Math.Pow(ratingU1, 2);
+
+                    uY += ratingU2;
+                    uYPow2 += Math.Pow(ratingU2, 2);
+
+                    watchDog++;
+                }
+            }
+
+
+            if (watchDog < 2)
+            {
+                return 0;
+            }
+
+            // EAT THAT
+            return ((uX + uY) - ((uX * uY) / watchDog)) / (Math.Sqrt(uXPow2 - (Math.Pow(uX, 2) / watchDog)) * Math.Sqrt(uYPow2 - (Math.Pow(uY, 2) / watchDog)));
+        }
+
         public double Similarity(User u1, User u2)
         {
             var distance = DistanceNorm2(u1, u2);
