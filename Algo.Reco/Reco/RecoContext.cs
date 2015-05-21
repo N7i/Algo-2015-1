@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Algo.Reco;
 
 namespace Algo
 {
@@ -86,6 +87,53 @@ namespace Algo
                 return 0;
             }
             return 1 / (1 + distance);
+        }
+
+        public List<Movie> GetRecoMovies(User u, int count)
+        {
+            SimilarUser[] similarUsers = GetSimilarUsers(u, 200);
+        }
+
+        private SimilarUser[] GetSimilarUsers(User u, int count)
+        {
+            
+        }
+    }
+
+    public class BestKeeper<T> : IReadOnlyList<T> {
+
+        private T[] _dataSet;
+
+        public BestKeeper(int count, Func<T, T, int> comparator) {
+            if (count < 0) { throw new ArgumentException("Count should be equal or superior at 0"); }
+
+            _dataSet = new T[count];
+        }
+
+        public bool Add(T item) {
+            int position = Array.BinarySearch(_dataSet, item);
+        }
+
+        int Count { get { return 0; } }
+
+        public T this[int index]
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        int IReadOnlyCollection<T>.Count
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }
