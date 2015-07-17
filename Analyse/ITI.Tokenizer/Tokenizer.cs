@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ITI.Parsing
 {
-    public class Tokenizer
+    public class Tokenizer : AbstractTokenizer
     {
         readonly string _toParse;
         int _pos;
@@ -67,22 +67,12 @@ namespace ITI.Parsing
 
         #endregion
 
-        public TokenType CurrentToken
+        public override TokenType CurrentToken
         {
             get { return _type; }
         }
 
-        public bool Match( TokenType t )
-        {
-            if( _type == t )
-            {
-                GetNextToken();
-                return true;
-            }
-            return false;
-        }
-
-        public bool MatchInteger( int expected )
+        public override bool MatchInteger( int expected )
         {
             if( _type == TokenType.Number && _curIntValue == expected )
             {
@@ -92,7 +82,7 @@ namespace ITI.Parsing
             return false;
         }
 
-        public bool MatchInteger( out int value )
+        public override bool MatchInteger( out int value )
         {
             value = 0;
             if( _type == TokenType.Number )
@@ -104,7 +94,7 @@ namespace ITI.Parsing
             return false;
         }
 
-        public TokenType GetNextToken()
+        public override TokenType GetNextToken()
         {
             // 1 - The end.
             if( IsEnd ) return _type = TokenType.EndOfInput;
@@ -157,8 +147,7 @@ namespace ITI.Parsing
             return _type;
         }
 
-
-        public bool MatchIdentifier( out string identifer )
+        public override bool MatchIdentifier( out string identifer )
         {
             identifer = null;
             if( _type == TokenType.Identifier )
@@ -170,7 +159,7 @@ namespace ITI.Parsing
             return false;
         }
 
-        public bool MatchIdentifier( string expected )
+        public override bool MatchIdentifier( string expected )
         {
             if( _type == TokenType.Identifier && _curIdentifierValue == expected )
             {
