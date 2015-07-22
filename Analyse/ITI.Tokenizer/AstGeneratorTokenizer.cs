@@ -33,12 +33,20 @@ namespace Algo.Genetic
             _maxDepth = maxDepth;
             _currentType = TokenType.None;
 
+            while(CurrentToken != TokenType.EndOfInput)
+            {
+                _tokens.Add(
+                    GenerateNextToken());
+            }
+
+            GetNextToken();
         }
 
         private TokenType GenerateNextToken()
         {
+            TokenType currentToken = CurrentToken;
             if (IsEnd) { return _currentType = TokenType.EndOfInput; }
-           
+            
 
             return TokenType.None;
         }

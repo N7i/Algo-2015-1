@@ -7,45 +7,68 @@ using System.Threading.Tasks;
 
 namespace Algo.Genetic
 {
-    public class Genetic
+    public class GeneticHelper
     {
 
-        private Node GenerateRndAst(int depth)
+        public static Node GenerateRndAst(int maxDepth)
         {
-            Node root = null;
-            for (var i = 0; i < depth; ++i)
+            return new BinaryOperatorNode(
+                GenerateRndOperator(),
+                GenerateRndNode(maxDepth, 0),
+                GenerateRndNode(maxDepth, 0)
+            );
+        }
+
+        private static Node GenerateRndNode(int maxDepth, int depth)
+        {
+            if (depth == maxDepth)
             {
-                Random r = new Random();
-                int rInt = r.Next(0, 6); 
-
-                switch(rInt)
-                {
-                    // Constant
-                    case 0:
-                        Random cr = new Random();
-                        double constant = cr.NextDouble() * int.MaxValue;
-
-
-                        break;
-                    // Variable
-                    case 1:
-
-                        break;
-                     // Binary
-                    case 2:
-
-                        break;
-                    // Unary
-                    case 3:
-
-                        break;
-                    // If
-                    case 4:
-                        break;
-                   
-                }
+                return new ConstantNode(GenerateRndConst());
             }
-            return root;
+
+            Random rnd = new Random();
+            int rValue = rnd.Next(1,3);
+
+
+            switch(rValue)
+            {
+                case 1:
+                    return new BinaryOperatorNode(
+                        GenerateRndOperator(),
+                        GenerateRndNode(maxDepth, depth + 1),
+                        GenerateRndNode(maxDepth, depth + 1)
+                    );
+                case 2:
+                    return new UnaryOperatorNode(
+                            TokenType.Minus,
+                            GenerateRndNode(maxDepth, depth + 1)
+                    );
+                default:
+                    return new ConstantNode(GenerateRndConst());
+                
+            }
+        }
+
+        private static TokenType GenerateRndOperator()
+        {
+            Random rnd = new Random();
+            int rValue = rnd.Next(1,3);
+
+            switch (rValue)
+            {
+                case 1:
+                    return TokenType.Plus;
+                case 2:
+                    return TokenType.Minus;
+                default:
+                   return TokenType.Mult;
+            }
+        }
+        
+        private static int GenerateRndConst()
+        {
+            Random rnd = new Random();
+            return rnd.Next(0, int.MaxValue);
         }
 
     }
