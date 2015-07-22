@@ -111,5 +111,52 @@ namespace Algo.Tests
                 Assert.That( c.Movies[i].MovieID, Is.EqualTo( i+1 ) );
         }
 
+        [Test]
+        public void computing_the_distance_between_2_users()
+        {
+            RecoContext c = new RecoContext();
+            c.LoadFrom( _goodDataPath );
+
+            const int part = 10;
+
+            for( int i = 0; i < c.Users.Length/part; i++ )
+            {
+                var u1 = c.Users[i];
+                Assert.That( c.DistanceNorm2( u1, u1 ), Is.EqualTo( 0 ) );
+                for( int j = i + 1; j < c.Users.Length/part; j++ )
+                {
+                    var u2 = c.Users[j];
+                    Assert.That( c.DistanceNorm2( u1, u2 ), Is.EqualTo( c.DistanceNorm2( u2, u1 ) ) );
+                }
+            }
+        }
+
+
+        [Test]
+        public void computing_recommended_movies()
+        {
+            RecoContext c = new RecoContext();
+            c.LoadFrom( _goodDataPath );
+
+            User u = c.Users[3712];
+            //List<Movie> recoMovies = c.GetRecoMovies( u, 15 );
+            //SimilarUser[] similarUsers = c.GetSimilarUsers( u, 200 );
+        }
+
+        [Test]
+        public void test_BestKeeper()
+        {
+            BestKeeper<int> b = new BestKeeper<int>( 5, (x,y) => y - x );
+            Assert.That( b.Count, Is.EqualTo( 0 ) );
+            Assert.That( b.Add( 5 ) );
+            Assert.That( b.Add( 3 ) );
+            Assert.That( b.Add( 4 ) );
+            CollectionAssert.AreEqual( new int[] { 5, 4, 3 }, b );
+            Assert.That( b.Add( 2 ) );
+            Assert.That( b.Add( 1 ) );
+            Assert.That( b.Add( 0 ), Is.False );
+            CollectionAssert.AreEqual( new int[] { 5, 4, 3, 2, 1 }, b );
+        }
+
     }
 }

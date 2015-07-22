@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ITI.Parsing.BinaryOperatorNode">
+    <Position X="1.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAACBCAAAAAIAA=</HashCode>
+      <FileName>BinaryOperatorNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Parsing.ConstantNode">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ConstantNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Parsing.ErrorNode">
+    <Position X="3.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ErrorNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Parsing.Node">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Parsing.UnaryOperatorNode">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAACAAAAAIAA=</HashCode>
+      <FileName>UnaryOperatorNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
