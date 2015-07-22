@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{198915DD-2054-48FA-9F85-CBDA01806C40}</ProjectGuid>
+    <ProjectGuid>{F29908C3-45AD-4DFB-B4F3-C4236CAD9ADE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Algo.Genetic</RootNamespace>
-    <AssemblyName>Algo.Genetic</AssemblyName>
+    <RootNamespace>Alog.Reco.Tests</RootNamespace>
+    <AssemblyName>Alog.Reco.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,21 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Genetic.cs" />
+    <Compile Include="SimpleGenetic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Algo.Reco\Algo.Reco.csproj">
-      <Project>{6ca9338e-0984-4a3f-870b-928294ee4161}</Project>
-      <Name>Algo.Reco</Name>
+    <ProjectReference Include="..\Algo.Genetic\Algo.Genetic.csproj">
+      <Project>{198915dd-2054-48fa-9f85-cbda01806c40}</Project>
+      <Name>Algo.Genetic</Name>
     </ProjectReference>
     <ProjectReference Include="..\ITI.Parser\ITI.Parser.csproj">
-      <Project>{3c276c00-0260-4d32-badf-f210875ae932}</Project>
+      <Project>{3C276C00-0260-4D32-BADF-F210875AE932}</Project>
       <Name>ITI.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ITI.Tokenizer\ITI.Tokenizer.csproj">
-      <Project>{cd178414-b10e-4b90-84a5-8ce1255d21eb}</Project>
-      <Name>ITI.Tokenizer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

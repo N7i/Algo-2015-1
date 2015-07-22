@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algo.Reco", "..\Algo.Reco\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algo.Genetic", "Algo.Genetic\Algo.Genetic.csproj", "{198915DD-2054-48FA-9F85-CBDA01806C40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alog.Reco.Tests", "Alog.Reco.Tests\Alog.Reco.Tests.csproj", "{F29908C3-45AD-4DFB-B4F3-C4236CAD9ADE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{198915DD-2054-48FA-9F85-CBDA01806C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{198915DD-2054-48FA-9F85-CBDA01806C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{198915DD-2054-48FA-9F85-CBDA01806C40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F29908C3-45AD-4DFB-B4F3-C4236CAD9ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F29908C3-45AD-4DFB-B4F3-C4236CAD9ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F29908C3-45AD-4DFB-B4F3-C4236CAD9ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F29908C3-45AD-4DFB-B4F3-C4236CAD9ADE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
